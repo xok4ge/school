@@ -5,6 +5,12 @@ class Situation:
         self.name = name
         self.items = items
 
+    def get_item(self, item):
+        if item not in self.items:
+            print("Сударь, Вы пытаетесь поднять нечто несуществующее в сем бренном мире.")
+            return
+        self.items.remove(item)
+        return item
 
 # situations = {}
 # start = Situation()
@@ -53,61 +59,61 @@ class Situation:
 # flat.name = 'Здесь бутылки принимают?'
 # situations[flat.name] = flat
 
-kitchen = Situation()
-kitchen.description = 'В кухне вы обнаруживаете сломанный самогонный аппарат и бутылку, наполненную по видимому этим самым напитком, а также множество шкафчиков'
-kitchen.ways['Дед доест'] = 'Выпить содержимое'
-kitchen.ways['Целомудрие'] = 'Обыскать шкафчики'
-kitchen.ways['Здесь бутылки принимают?'] = 'Вернуться'
-kitchen.name = 'Кухня'
-situations[kitchen.name] = kitchen
+# kitchen = Situation()
+# kitchen.description = 'В кухне вы обнаруживаете сломанный самогонный аппарат и бутылку, наполненную по видимому этим самым напитком, а также множество шкафчиков'
+# kitchen.ways['Дед доест'] = 'Выпить содержимое'
+# kitchen.ways['Целомудрие'] = 'Обыскать шкафчики'
+# kitchen.ways['Здесь бутылки принимают?'] = 'Вернуться'
+# kitchen.name = 'Кухня'
+# situations[kitchen.name] = kitchen
 
-death_alc = Situation()
-death_alc.description = 'Как только вы делаете глоток, ваши синапсы мгновенно сгорают, а из глаз начинает течь кровь. Вскоре вы умираете в страшных муках'
-death_alc.name = 'Дед доест'
-situations[death_alc.name] = death_alc
+# death_alc = Situation()
+# death_alc.description = 'Как только вы делаете глоток, ваши синапсы мгновенно сгорают, а из глаз начинает течь кровь. Вскоре вы умираете в страшных муках'
+# death_alc.name = 'Дед доест'
+# situations[death_alc.name] = death_alc
 
-search = Situation()
-search.description = 'Вы обыскиваете один из шкафчиков и кладете найденные предметы в рюкзак'
-search.ways['Кухня'] = 'Остановиться'
-search.ways['Целомудрие'] = 'Продолжить'
-search.name = 'Целомудрие'
-situations[search.name] = search
+# search = Situation()
+# search.description = 'Вы обыскиваете шкафчики'
+# search.ways['Кухня'] = 'Остановиться'
+# search.ways['Целомудрие'] = 'Продолжить'
+# search.name = 'Целомудрие'
+# situations[search.name] = search
 
-bedroom = Situation()
-bedroom.description = 'Вы входите в спальню. На полу стоит телевизор с DVD-проигрывателем'
-bedroom.ways['Гик'] = 'Включить проигрыватель'
-bedroom.ways['Здесь бутылки принимают?'] = 'Вернуться'
-bedroom.name = 'Спальня'
-situations[bedroom.name] = bedroom
+# bedroom = Situation()
+# bedroom.description = 'Вы входите в спальню. На полу стоит телевизор с DVD-проигрывателем'
+# bedroom.ways['Гик'] = 'Включить проигрыватель'
+# bedroom.ways['Здесь бутылки принимают?'] = 'Вернуться'
+# bedroom.name = 'Спальня'
+# situations[bedroom.name] = bedroom
 
-death_anime = Situation()
-death_anime.description = '''
-Как только вы включаете телевизор, комнату наполняет оглушительный крик \'АНННННИИГИЛЯТОРНАЯ ПУШКАААА\'.
-Звук был настолько мощный, что ваше тело моментально превращается в прах'''
-death_anime.name = 'Гик'
-situations[death_anime.name] = death_anime
+# death_anime = Situation()
+# death_anime.description = '''
+# Как только вы включаете телевизор, комнату наполняет оглушительный крик \'АНННННИИГИЛЯТОРНАЯ ПУШКАААА\'.
+# Звук был настолько мощный, что ваше тело моментально превращается в прах'''
+# death_anime.name = 'Гик'
+# situations[death_anime.name] = death_anime
 
-roof = Situation()
-roof.description = '''Вы выбегаете на крышу и задеваете растяжку, из-за которой спотыкаетесь и перелетаете ограждение.
-Последние, что вы слышите - это трек ЛСП \'Номера\'.
-'''
-roof.name = 'Вверх'
-situations[roof.name] = roof
+# roof = Situation()
+# roof.description = '''Вы выбегаете на крышу и задеваете растяжку, из-за которой спотыкаетесь и перелетаете ограждение.
+# Последние, что вы слышите - это трек ЛСП \'Номера\'.
+# '''
+# roof.name = 'Вверх'
+# situations[roof.name] = roof
 
-death = Situation()
-death.description = 'Вы медленно истекаете кровью и спустя некоторое время умираете. А чего вы еще ожидали?'
-death.name = 'Фатализм'
-situations[death.name] = death
+# death = Situation()
+# death.description = 'Вы медленно истекаете кровью и спустя некоторое время умираете. А чего вы еще ожидали?'
+# death.name = 'Фатализм'
+# situations[death.name] = death
 
-d1 = Situation()
-d1.description = 'Бюджета на сцену не хватило, да и у разраба было другое дз. Здесь ваш путь кончается'
-d1.name = 'Обыск'
-situations[d1.name] = d1
-
-d2 = Situation()
-d2.description = 'Бюджета на сцену не хватило, да и у разраба было другое дз. Здесь ваш путь кончается'
-d2.name = 'Убежище'
-situations[d2.name] = d2
+# d1 = Situation()
+# d1.description = 'Бюджета на сцену не хватило, да и у разраба было другое дз. Здесь ваш путь кончается'
+# d1.name = 'Обыск'
+# situations[d1.name] = d1
+#
+# d2 = Situation()
+# d2.description = 'Бюджета на сцену не хватило, да и у разраба было другое дз. Здесь ваш путь кончается'
+# d2.name = 'Убежище'
+# situations[d2.name] = d2
 
 class Game:
     def __init__(self):
@@ -128,18 +134,78 @@ class Game:
                     Situation('Здесь бутылки принимают?', 'Вы входите в квартиру',
                               {'Кухня': 'Зайти на кухню', 'Спальня': 'Зайти в спальню', 'Лестница': 'Вернуться',}, []),
                     Situation('Кухня', 'В кухне вы обнаруживаете сломанный самогонный аппарат и бутылку, наполненную по видимому этим самым напитком, а также множество шкафчиков',
-                              {'Дед доест': 'Выпить содержимое', 'Целомудрие': 'Обыскать шкафчики', 'Здесь бутылки принимают?': })]
-
-
+                              {'Дед доест': 'Выпить содержимое', 'Целомудрие': 'Обыскать шкафчики', 'Здесь бутылки принимают?': 'Вернуться'}, []),
+                    Situation('Дед доест', 'Как только вы делаете глоток, ваши синапсы мгновенно сгорают, а из глаз начинает течь кровь. Вскоре вы умираете в страшных муках', {}, []),
+                    Situation('Целомудрие', 'Вы обыскиваете шкафчики', {'Кухня': 'Остановиться', 'Целомудрие': 'Продолжить'}, ['Консервы', 'Нож', 'Спички']),
+                    Situation('Спальня', 'Вы входите в спальню. На полу стоит телевизор с DVD-проигрывателем', {'Гик': 'Включить проигрыватель', 'Здесь бутылки принимают?': 'Вернуться'}, []),
+                    Situation('Гик', '''
+Как только вы включаете телевизор, комнату наполняет оглушительный крик \'АНННННИИГИЛЯТОРНАЯ ПУШКАААА\'.
+Звук был настолько мощный, что ваше тело моментально превращается в прах''', {}, []),
+                    Situation('Вверх', '''Вы выбегаете на крышу и задеваете растяжку, из-за которой спотыкаетесь и перелетаете ограждение.
+Последние, что вы слышите - это трек ЛСП \'Номера\'.
+''', {}, []),
+                    Situation('Фатализм', 'Вы медленно истекаете кровью и спустя некоторое время умираете. А чего вы еще ожидали?', {}, []),
+                    Situation('Обыск', 'Бюджета на сцену не хватило, да и у разраба было другое дз. Здесь ваш путь кончается', {}, []),
+                    Situation('Убежище', 'Бюджета на сцену не хватило, да и у разраба было другое дз. Здесь ваш путь кончается', {}, [])]
+        self.situations = dict()
+        for sit in self.lst:
+            self.situations[sit.name] = sit
+        self.inventory = []
 
     def game(self):
-        current_situation = situations['Старт']
+        current_situation = self.situations['Старт']
         while True:
+            flag = False
+            cntr = 0
             print(current_situation.description)
-            for key, value in current_situation.ways.items():
-                print(f'{key}: {value}')
-            choice = input()
-            current_situation = situations[choice]
+            for i, (key, value) in enumerate(current_situation.ways.items()):
+                print(f'{i+1}: {value}')
+                cntr = i
+            if current_situation.items:
+                print(f'{cntr+2}: Взять предмет')
+                print(f'{cntr+3}: Открыть инвентарь')
+                flag = True
+            else:
+                print(f'{cntr+2}: Открыть инвентарь')
+
+
+            choice_num = int(input())
+            if choice_num != cntr + 2 and choice_num != cntr + 3:
+                choice = list(current_situation.ways.keys())[choice_num - 1]
+                current_situation = self.situations[choice]
+            else:
+                if choice_num == cntr+2 and flag:
+                    print("Выберите предмет: " + " ".join(current_situation.items))
+                    choice_item = input()
+                    self.inventory.append(current_situation.get_item(choice_item))
+                elif choice_num == cntr+2 and not flag:
+                    print(f'Ваш инвентарь: {self.inventory}')
+                else:
+                    print(f'Ваш инвентарь: {self.inventory}')
             if len(current_situation.ways) == 0:
                 break
         print(current_situation.description)
+
+
+# Game().game()
+
+
+# def fnc(x, A, k, m):
+#     min1, max1 = A-k, A+k
+#     min2, max2 = A-m, A+m
+#     if min1 <= x <= max1:
+#         return 1
+#     elif min2 <= x < min1:
+#         zero = (min2, 0)
+#         nex = (min1, 1)
+#         y = ((nex[1] - zero[1])*(x - zero[0]))/(nex[0]-zero[0]) - zero[1]
+#         return y
+#     elif max1 < x <= max2:
+#         zero = (max1, 1)
+#         nex = (max2, 0)
+#         y = ((nex[1] - zero[1]) * (x - zero[0])) / (nex[0] - zero[0]) - zero[1]
+#         return y
+#     return 0
+# 
+# print(fnc(14, 10, 3, 5))
+

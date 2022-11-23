@@ -1,1 +1,16 @@
+def fnc(x, A, k, m):
+    min1, max1 = A-k, A+k
+    min2, max2 = A-m, A+m
+    y = 0
+    if min1 <= x <= max1:
+        return 1
+    elif min2 < x < min1:
+        zero, nex = (min2, 0), (min1, 1)
+        y = ((nex[1] - zero[1]) * (x - zero[0])) / (nex[0] - zero[0]) - zero[1]
+    elif max1 < x < max2:
+        zero, nex = (max2, 0), (max1, 1)
+        y = ((nex[1] - zero[1]) * (x - zero[0])) / (nex[0] - zero[0]) - zero[1]
+    return y
 
+
+print(fnc(14, 10, 3, 5))

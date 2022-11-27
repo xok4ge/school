@@ -1,0 +1,34 @@
+import matplotlib.pyplot as plt
+
+
+def fnc(x, A, k, m):
+    min1, max1 = A-k, A+k
+    min2, max2 = A-m, A+m
+    if min1 <= x <= max1:
+        return 1
+    elif min2 < x < min1:
+        zero = (min2, 0)
+        nex = (min1, 1)
+        y = ((nex[1] - zero[1])*(x - zero[0]))/(nex[0]-zero[0]) - zero[1]
+        return y
+    elif max1 < x < max2:
+        zero = (max2, 0)
+        nex = (max1, 1)
+        y = ((nex[1] - zero[1]) * (x - zero[0])) / (nex[0] - zero[0]) - zero[1]
+        return y
+    return 0
+
+
+fig, ax = plt.subplots()
+
+xq, A, k, m = map(float, input().split())
+
+
+x = [A-m*2, A-m, A-k, A+k, A+m, A+m*2]
+y = [0, 0, 1, 1, 0, 0]
+
+ax.plot(x, y, linewidth='2.0')
+yq = fnc(xq, A, k, m)
+plt.plot(xq, yq, 'ro')
+
+plt.show()

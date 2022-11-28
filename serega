@@ -177,7 +177,9 @@ class Game:
                 if choice_num == cntr+2 and flag:
                     print("Выберите предмет: " + " ".join(current_situation.items))
                     choice_item = input()
-                    self.inventory.append(current_situation.get_item(choice_item))
+                    self.inventory.append(current_situation.get_item(choice_item.capitalize()))
+                    if None in self.inventory:
+                        self.inventory.remove(None)
                 elif choice_num == cntr+2 and not flag:
                     print(f'Ваш инвентарь: {self.inventory}')
                 else:
@@ -187,25 +189,4 @@ class Game:
         print(current_situation.description)
 
 
-# Game().game()
-
-
-# def fnc(x, A, k, m):
-#     min1, max1 = A-k, A+k
-#     min2, max2 = A-m, A+m
-#     if min1 <= x <= max1:
-#         return 1
-#     elif min2 <= x < min1:
-#         zero = (min2, 0)
-#         nex = (min1, 1)
-#         y = ((nex[1] - zero[1])*(x - zero[0]))/(nex[0]-zero[0]) - zero[1]
-#         return y
-#     elif max1 < x <= max2:
-#         zero = (max1, 1)
-#         nex = (max2, 0)
-#         y = ((nex[1] - zero[1]) * (x - zero[0])) / (nex[0] - zero[0]) - zero[1]
-#         return y
-#     return 0
-# 
-# print(fnc(14, 10, 3, 5))
-
+Game().game()

@@ -1,0 +1,62 @@
+import matplotlib.pyplot as plt
+
+
+def fnc(x, A, k, m):
+    min1, max1 = A-k, A+k
+    min2, max2 = A-m, A+m
+    if min1 <= x <= max1:
+        return 1
+    elif min2 < x < min1:
+        zero = (min2, 0)
+        nex = (min1, 1)
+        y = ((nex[1] - zero[1])*(x - zero[0]))/(nex[0]-zero[0]) - zero[1]
+        return y
+    elif max1 < x < max2:
+        zero = (max2, 0)
+        nex = (max1, 1)
+        y = ((nex[1] - zero[1]) * (x - zero[0])) / (nex[0] - zero[0]) - zero[1]
+        return y
+    return 0
+
+
+def cross(min_a, max_d, trap1, trap2):
+    alq_y = []
+    alq_x = []
+    xwe = 0.01
+    for x in range(10000):
+        y_cord1 = fnc(xwe, *trap1)
+        y_cord2 = fnc(xwe, *trap2)
+        alq_y.append(min(y_cord1, y_cord2))
+        alq_x.append(xwe)
+        xwe += 0.01
+    return max(alq_y), alq_x[alq_y.index(max(alq_y))]
+
+
+fig, ax = plt.subplots(ncols=2)
+plt.ylim(0, 1)
+
+
+xq, A, k, m = map(float, input().split())
+xq2, A2, k2, m2 = map(float, input().split())
+
+x = [A-m, A-k, A+k, A+m]
+y = [0, 1, 1, 0]
+ax[0].plot(x, y, linewidth='2.0')
+
+
+
+x2 = [A2-m2, A2-k2, A2+k2, A2+m2]
+y2 = [0, 1, 1, 0]
+ax[0].plot(x2, y2, linewidth='2.0')
+
+
+
+yq, xqq = cross(int(min(A-m, A2-m2)), int(max(A+m, A2+m2)), [A, k, m], [A2, k2, m2])
+
+x3 = [2, 3, 4, 5]
+y3 = [0, yq, yq, 0]
+ax[0].plot(xqq, yq, 'ro')
+ax[1].plot(x3, y3, linewidth='2.0')
+
+plt.show()
+

@@ -1,0 +1,76 @@
+import matplotlib.pyplot as plt
+
+
+def obrez(args):
+    alq_x = []
+    alq_y = []
+    d1, d2 = int(min([min(i[0]) for i in args]) // 0.01), int(max([max(i[0]) for i in args]) // 0.01)
+    xwe = min([min(i[0]) for i in args])
+    for _ in range(d1, d2):
+        t = [fnc_o(xwe, i[0], i[1]) for i in args]
+        alq_y.append(max(t))
+        alq_x.append(xwe)
+        xwe += 0.01
+    return alq_x, alq_y
+
+
+def fnc_o(x, cord, max_y):
+    min1, max1 = cord[1], cord[2]
+    min2, max2 = cord[0], cord[3]
+    if min1 <= x <= max1:
+        print(x)
+        return max_y
+    elif min2 < x < min1:
+        zero = (min2, 0)
+        nex = (min1, max_y)
+        y = ((nex[1] - zero[1])*(x - zero[0]))/(nex[0]-zero[0]) - zero[1]
+        return y
+    elif max1 < x < max2:
+        zero = (max2, 0)
+        nex = (max1, max_y)
+        y = ((nex[1] - zero[1]) * (x - zero[0])) / (nex[0] - zero[0]) - zero[1]
+        return y
+    return 0
+
+
+def fnc(x, A, k, m):
+    min1, max1 = A-k, A+k
+    min2, max2 = A-m, A+m
+    if min1 <= x <= max1:
+        return 1
+    elif min2 < x < min1:
+        zero = (min2, 0)
+        nex = (min1, 1)
+        y = ((nex[1] - zero[1])*(x - zero[0]))/(nex[0]-zero[0]) - zero[1]
+        return y
+    elif max1 < x < max2:
+        zero = (max2, 0)
+        nex = (max1, 1)
+        y = ((nex[1] - zero[1]) * (x - zero[0])) / (nex[0] - zero[0]) - zero[1]
+        return y
+    return 0
+
+
+def cross(min_a, max_d, trap1, trap2):
+    alq_y = []
+    alq_x = []
+    xwe = 0.01
+    for x in range(10000):
+        y_cord1 = fnc(xwe, *trap1)
+        y_cord2 = fnc(xwe, *trap2)
+        alq_y.append(min(y_cord1, y_cord2))
+        alq_x.append(xwe)
+        xwe += 0.01
+    return max(alq_y), alq_x[alq_y.index(max(alq_y))]
+
+
+fig, ax = plt.subplots(ncols=3)
+fig2, ax2 = plt.subplots()
+plt.ylim(0, 1)
+
+ax2.plot([2, 3, 4, 5], [0, 0.5, 0.5, 0], linewidth='2.0')
+ax2.plot([4, 6, 8, 10], [0, 0.7, 0.7, 0], linewidth='2.0')
+ax2.plot([7, 10, 12, 15], [0, 0.6, 0.6, 0], linewidth='2.0')
+x_o, y_o = obrez([[[2, 3, 4, 5], 0.5], [[4, 6, 8, 10], 0.7], [[7, 10, 12, 15], 0.6]])
+ax2.plot(x_o, y_o, linewidth='2.0')
+plt.show()
